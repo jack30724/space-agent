@@ -524,11 +524,13 @@ func modifyConfigWhenRunInDocker() {
 				*v = strings.ReplaceAll(*v, "localhost:8080", "aospace-gateway:8080")
 				*v = strings.ReplaceAll(*v, "127.0.0.1:6379", "aospace-redis:6379")
 			}
-		}
+			Config.GateWay.LanPort = 12841
+			Config.GateWay.TlsLanPort = 18569
 
-		// All
-		Config.GateWay.LanPort = 12841
-		Config.GateWay.TlsLanPort = 18569
+		} else {
+			Config.GateWay.LanPort = 80
+			Config.GateWay.TlsLanPort = 443
+		}
 
 	}
 	// fmt.Printf("######################## Config.Log.Path:%v\n",
